@@ -63,6 +63,16 @@ namespace SwissTransportApp.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_daten_in_beide_richtungen_filled_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-daten-in-beide-richtungen-filled-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_full_screen_filled_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-full-screen-filled-50", resourceCulture);
