@@ -40,6 +40,7 @@
             this.Fahrdauer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Endstation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimePicker = new System.Windows.Forms.DateTimePicker();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataViewGrid)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +58,8 @@
             // 
             // ToStation
             // 
+            this.ToStation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.ToStation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ToStation.FormattingEnabled = true;
             this.ToStation.Location = new System.Drawing.Point(500, 58);
             this.ToStation.Name = "ToStation";
@@ -184,5 +187,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ankunft;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fahrdauer;
         private System.Windows.Forms.DataGridViewTextBoxColumn Endstation;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

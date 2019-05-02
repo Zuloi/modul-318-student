@@ -40,8 +40,17 @@ namespace SwissTransportApp
 
         private void SearchConnection_Click(object sender, EventArgs e)
         {
-            Transport transport = new Transport();
-            
+            Transport transport = new Transport();        
+            Connections connections = transport.GetConnections(FromStation.Text , ToStation.Text);
+            List<Connection> connectionList = connections.ConnectionList;
+
+
+            foreach (Connection connection in connectionList)
+            {
+                this.DataViewGrid.Rows.Add(connection.To.Station.Name); 
+
+            }
+
         }
 
       
@@ -57,12 +66,13 @@ namespace SwissTransportApp
             Transport transport = new Transport();
             Stations stations = new Stations();
             ComboBox userInput = (ComboBox)sender;
-            List<Station> stationList;
+            
 
             if (userInput.Text.Length >= 1)
             {
                 stations = transport.GetStations(userInput.Text);
-                stationList = stations.StationList;
+                List<Station> stationList = stations.StationList;
+                
 
                 if (stationList.Count > 0)
                 {
@@ -71,6 +81,7 @@ namespace SwissTransportApp
                         try
                         {
                             userInput.Items.Add(station.Name);
+                            
                         }
                         catch (Exception ex)
                         {
