@@ -23,10 +23,11 @@ namespace SwissTransportApp
 
         private void ConnectionSearch_Load(object sender, EventArgs e)
         {
-            dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.CustomFormat = "dd, MM, yy";
+            DatePicker.Format = DateTimePickerFormat.Custom;
+            DatePicker.CustomFormat = "dd, MM, yy";
 
-            
+            TimePicker.Format = DateTimePickerFormat.Custom;
+            TimePicker.CustomFormat = "HH:mm ";
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -43,9 +44,40 @@ namespace SwissTransportApp
             
         }
 
-        private void FromStation_SelectedIndexChanged(object sender, EventArgs e)
-        {
+      
 
+
+
+    
+
+   
+
+        private void StationFill(object sender, EventArgs e)
+        {
+            Transport transport = new Transport();
+            Stations stations = new Stations();
+            ComboBox userInput = (ComboBox)sender;
+
+            if (userInput.Text.Length >= 1)
+            {
+                stations = transport.GetStations(userInput.Text);
+                List<Station> stationList = stations.StationList;
+
+                if (stationList.Count > 0)
+                {
+                    foreach (Station station in stationList)
+                    {
+                        try
+                        {
+                            userInput.Items.Add(station.Name);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+            }
         }
     }
 }

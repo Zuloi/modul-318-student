@@ -38,8 +38,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ExitForms = new System.Windows.Forms.Label();
             this.content = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.navbarpanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ZugIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaximizedForms)).BeginInit();
@@ -160,14 +160,6 @@
             this.content.TabIndex = 1;
             this.content.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SwissTransport_MouseDown);
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(352, 200);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 1;
-            // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
@@ -175,6 +167,14 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 2;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(352, 200);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 1;
             // 
             // NavBar
             // 

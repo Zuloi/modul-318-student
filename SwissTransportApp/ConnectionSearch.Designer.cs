@@ -30,25 +30,30 @@
         {
             this.FromStation = new System.Windows.Forms.ComboBox();
             this.ToStation = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.DatePicker = new System.Windows.Forms.DateTimePicker();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.SearchConnection = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DataViewGrid = new System.Windows.Forms.DataGridView();
+            this.Abfahrt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gleis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ankunft = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fahrdauer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Endstation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimePicker = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataViewGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // FromStation
             // 
-            this.FromStation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.FromStation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.FromStation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.FromStation.FormattingEnabled = true;
             this.FromStation.Location = new System.Drawing.Point(77, 58);
             this.FromStation.Name = "FromStation";
             this.FromStation.Size = new System.Drawing.Size(181, 21);
             this.FromStation.TabIndex = 0;
-            this.FromStation.SelectedIndexChanged += new System.EventHandler(this.FromStation_SelectedIndexChanged);
+            this.FromStation.TextChanged += new System.EventHandler(this.StationFill);
             // 
             // ToStation
             // 
@@ -57,23 +62,15 @@
             this.ToStation.Name = "ToStation";
             this.ToStation.Size = new System.Drawing.Size(181, 21);
             this.ToStation.TabIndex = 1;
+            this.ToStation.TextChanged += new System.EventHandler(this.StationFill);
             // 
-            // dateTimePicker1
+            // DatePicker
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(77, 106);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(89, 20);
-            this.dateTimePicker1.TabIndex = 3;
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(194, 106);
-            this.maskedTextBox1.Mask = "90:00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(64, 20);
-            this.maskedTextBox1.TabIndex = 6;
-            this.maskedTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DatePicker.Location = new System.Drawing.Point(77, 106);
+            this.DatePicker.Name = "DatePicker";
+            this.DatePicker.Size = new System.Drawing.Size(89, 20);
+            this.DatePicker.TabIndex = 3;
             // 
             // pictureBox1
             // 
@@ -96,14 +93,59 @@
             this.SearchConnection.UseVisualStyleBackColor = true;
             this.SearchConnection.Click += new System.EventHandler(this.SearchConnection_Click);
             // 
-            // dataGridView1
+            // DataViewGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 180);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(800, 270);
-            this.dataGridView1.TabIndex = 8;
+            this.DataViewGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataViewGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Abfahrt,
+            this.Gleis,
+            this.Ankunft,
+            this.Fahrdauer,
+            this.Endstation});
+            this.DataViewGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.DataViewGrid.Location = new System.Drawing.Point(0, 180);
+            this.DataViewGrid.Name = "DataViewGrid";
+            this.DataViewGrid.Size = new System.Drawing.Size(800, 270);
+            this.DataViewGrid.TabIndex = 8;
+            // 
+            // Abfahrt
+            // 
+            this.Abfahrt.HeaderText = "Abfahrt";
+            this.Abfahrt.Name = "Abfahrt";
+            this.Abfahrt.Width = 160;
+            // 
+            // Gleis
+            // 
+            this.Gleis.HeaderText = "Gleis";
+            this.Gleis.Name = "Gleis";
+            this.Gleis.Width = 160;
+            // 
+            // Ankunft
+            // 
+            this.Ankunft.HeaderText = "Ankunft";
+            this.Ankunft.Name = "Ankunft";
+            this.Ankunft.Width = 160;
+            // 
+            // Fahrdauer
+            // 
+            this.Fahrdauer.HeaderText = "Fahrdauer";
+            this.Fahrdauer.Name = "Fahrdauer";
+            this.Fahrdauer.Width = 160;
+            // 
+            // Endstation
+            // 
+            this.Endstation.HeaderText = "Endstation";
+            this.Endstation.Name = "Endstation";
+            this.Endstation.Width = 160;
+            // 
+            // TimePicker
+            // 
+            this.TimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.TimePicker.Location = new System.Drawing.Point(189, 106);
+            this.TimePicker.Name = "TimePicker";
+            this.TimePicker.ShowUpDown = true;
+            this.TimePicker.Size = new System.Drawing.Size(69, 20);
+            this.TimePicker.TabIndex = 9;
             // 
             // ConnectionSearch
             // 
@@ -111,10 +153,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.TimePicker);
+            this.Controls.Add(this.DataViewGrid);
             this.Controls.Add(this.SearchConnection);
-            this.Controls.Add(this.maskedTextBox1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.DatePicker);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ToStation);
             this.Controls.Add(this.FromStation);
@@ -123,9 +165,8 @@
             this.Text = "ConnectionSearch";
             this.Load += new System.EventHandler(this.ConnectionSearch_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataViewGrid)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -134,9 +175,14 @@
         private System.Windows.Forms.ComboBox FromStation;
         private System.Windows.Forms.ComboBox ToStation;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.DateTimePicker DatePicker;
         private System.Windows.Forms.Button SearchConnection;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DataViewGrid;
+        private System.Windows.Forms.DateTimePicker TimePicker;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Abfahrt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gleis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ankunft;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fahrdauer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Endstation;
     }
 }
