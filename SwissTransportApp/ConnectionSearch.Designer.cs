@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.FromStation = new System.Windows.Forms.ComboBox();
             this.ToStation = new System.Windows.Forms.ComboBox();
             this.DatePicker = new System.Windows.Forms.DateTimePicker();
@@ -98,6 +101,21 @@
             // 
             // DataViewGrid
             // 
+            this.DataViewGrid.AllowUserToAddRows = false;
+            this.DataViewGrid.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.IndianRed;
+            this.DataViewGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.DataViewGrid.BackgroundColor = System.Drawing.Color.IndianRed;
+            this.DataViewGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DataViewGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.IndianRed;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataViewGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DataViewGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataViewGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Abfahrt,
@@ -105,9 +123,22 @@
             this.Ankunft,
             this.Fahrdauer,
             this.Endstation});
+            this.DataViewGrid.Cursor = System.Windows.Forms.Cursors.Default;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataViewGrid.DefaultCellStyle = dataGridViewCellStyle3;
             this.DataViewGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.DataViewGrid.EnableHeadersVisualStyles = false;
+            this.DataViewGrid.GridColor = System.Drawing.Color.Black;
             this.DataViewGrid.Location = new System.Drawing.Point(0, 180);
+            this.DataViewGrid.MultiSelect = false;
             this.DataViewGrid.Name = "DataViewGrid";
+            this.DataViewGrid.RowHeadersVisible = false;
             this.DataViewGrid.Size = new System.Drawing.Size(800, 270);
             this.DataViewGrid.TabIndex = 8;
             // 

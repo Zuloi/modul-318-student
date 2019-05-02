@@ -47,7 +47,8 @@ namespace SwissTransportApp
 
             foreach (Connection connection in connectionList)
             {
-                this.DataViewGrid.Rows.Add(connection.To.Station.Name); 
+                this.DataViewGrid.Rows.Add(connection.From.Station.Name, connection.From.Platform, connection.To.Station.Name);
+               
 
             }
 
