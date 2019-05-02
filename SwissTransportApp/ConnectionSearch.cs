@@ -57,11 +57,12 @@ namespace SwissTransportApp
             Transport transport = new Transport();
             Stations stations = new Stations();
             ComboBox userInput = (ComboBox)sender;
+            List<Station> stationList;
 
             if (userInput.Text.Length >= 1)
             {
                 stations = transport.GetStations(userInput.Text);
-                List<Station> stationList = stations.StationList;
+                stationList = stations.StationList;
 
                 if (stationList.Count > 0)
                 {
