@@ -23,11 +23,11 @@ namespace SwissTransportApp
 
         private void ConnectionSearch_Load(object sender, EventArgs e)
         {
-            DatePicker.Format = DateTimePickerFormat.Custom;
-            DatePicker.CustomFormat = "dd, MM, yy";
+            Date.Format = DateTimePickerFormat.Custom;
+            Date.CustomFormat = "yyyy-MM-dd";
 
-            TimePicker.Format = DateTimePickerFormat.Custom;
-            TimePicker.CustomFormat = "HH:mm ";
+            Time.Format = DateTimePickerFormat.Custom;
+            Time.CustomFormat = "HH:mm";
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -41,13 +41,12 @@ namespace SwissTransportApp
         private void SearchConnection_Click(object sender, EventArgs e)
         {
             Transport transport = new Transport();        
-            Connections connections = transport.GetConnections(FromStation.Text , ToStation.Text);
-            List<Connection> connectionList = connections.ConnectionList;
+            Connections connections = transport.GetConnections(FromStation.Text, ToStation.Text, Date.Text, Time.Text);
 
-
-            foreach (Connection connection in connectionList)
+           
+            foreach (Connection connection in connections.ConnectionList)
             {
-                this.DataViewGrid.Rows.Add(connection.From.Station.Name, connection.From.Platform, connection.To.Station.Name);
+                this.DataViewGrid.Rows.Add(Convert.ToDateTime(connection.From.Departure).ToString("HH:mm"), connection.From.Station.Name, connection.From.Platform, connection.Duration, connection.To.Station.Name, connection.To.Platform);
                
 
             }
