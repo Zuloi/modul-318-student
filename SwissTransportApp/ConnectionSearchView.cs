@@ -13,13 +13,13 @@ using System.Windows.Forms;
 
 namespace SwissTransportApp
 {
-    public partial class ConnectionSearch : Form
+    public partial class ConnectionSearchView : Form
     {
         
         
         
        
-        public ConnectionSearch()
+        public ConnectionSearchView()
         {
             InitializeComponent();
         }
@@ -104,19 +104,11 @@ namespace SwissTransportApp
 
         private void FromLocation_Click(object sender, EventArgs e)
         {
-            
-            Transport transport = new Transport();
-            Stations stations = transport.GetStations(FromStation.Text);
-            List<Station> stationList = stations.StationList;
-
             if (FromStation.Text != null)
             {
                 try
                 {
-                    double xcoordinate = stationList[FromStation.SelectedIndex].Coordinate.XCoordinate;
-                    double ycoordinate = stationList[FromStation.SelectedIndex].Coordinate.YCoordinate;
-
-                    Process.Start("https://www.google.com/maps/search/?api=1&query=" + xcoordinate + "," + ycoordinate);
+                    Process.Start("https://www.google.com/maps/search/?api=1&query=" + FromStation.Text);
                 }
                 catch
                 {
@@ -129,22 +121,13 @@ namespace SwissTransportApp
             }
         }
 
-        private void Location_Click(object sender, EventArgs e)
+        private void ToLocation_Click(object sender, EventArgs e)
         {
-            Transport transport = new Transport();
-            ComboBox userInput = (ComboBox)sender;
-            Stations stations = transport.GetStations(userInput.Text);
-            List<Station> stationList = stations.StationList;
-            
-
-            if (userInput.Text.Length != 0)
-            {   
+            if (ToStation.Text != null)
+            {
                 try
                 {
-                    double xcoordinate = stationList[userInput.SelectedIndex].Coordinate.XCoordinate;
-                    double ycoordinate = stationList[userInput.SelectedIndex].Coordinate.YCoordinate;
-
-                    Process.Start("https://www.google.com/maps/search/?api=1&query=" + xcoordinate + "," + ycoordinate);
+                    Process.Start("https://www.google.com/maps/search/?api=1&query=" + ToStation.Text);
                 }
                 catch
                 {
@@ -153,10 +136,9 @@ namespace SwissTransportApp
             }
             else
             {
-                MessageBox.Show("Der Abfahrtsort ist ungültig.");
+                MessageBox.Show("Der Ankunftsort ist ungültig.");
             }
         }
     }
     
 }
-//List<Station> ToStations = new List<Station>();

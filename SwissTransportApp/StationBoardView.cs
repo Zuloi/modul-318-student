@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace SwissTransportApp
 {
-    public partial class StationBoard : Form
+    public partial class StationBoardView : Form
     {
-        public StationBoard()
+        public StationBoardView()
         {
             InitializeComponent();
         }
@@ -62,16 +62,16 @@ namespace SwissTransportApp
               }*/
 
             Transport transport = new Transport();
-            
             StationBoardRoot stationBoardRoot = new StationBoardRoot();
-            //stationBoardEntries = transport.GetStationBoard(FromStation.Text).Entries;
-            /* try
+            
+           
+             try
              {
                  stationBoardRoot = transport.GetStationBoard(FromStation.Text);
 
-                 foreach ( stationBoard in stationBoardRoot.Entries)
+                 foreach(StationBoard stationBoard in stationBoardRoot.Entries)
                  {
-                      DataViewGrid.Rows.Add(Convert.ToDateTime(stationBoard.Stop.Departure).ToString("HH:mm"), stationBoard.To);
+                      DataViewGrid.Rows.Add(Convert.ToDateTime(stationBoard.Stop.Departure).ToString("HH:mm"), FromStation.Text, stationBoard.Number, stationBoard.Operator, stationBoard.To);
                  }
              }
                   catch (Exception )

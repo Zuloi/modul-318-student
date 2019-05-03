@@ -1,6 +1,6 @@
 ﻿namespace SwissTransportApp
 {
-    partial class ConnectionSearch
+    partial class ConnectionSearchView
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectionSearch));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectionSearchView));
             this.FromStation = new System.Windows.Forms.ComboBox();
             this.ToStation = new System.Windows.Forms.ComboBox();
             this.Date = new System.Windows.Forms.DateTimePicker();
@@ -58,6 +58,7 @@
             // 
             // FromStation
             // 
+            this.FromStation.AllowDrop = true;
             this.FromStation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.FromStation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.FromStation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -70,6 +71,7 @@
             // 
             // ToStation
             // 
+            this.ToStation.AllowDrop = true;
             this.ToStation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.ToStation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ToStation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -222,7 +224,7 @@
             this.FromLocation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.FromLocation.TabIndex = 10;
             this.FromLocation.TabStop = false;
-            this.FromLocation.Click += new System.EventHandler(this.Location_Click);
+            this.FromLocation.Click += new System.EventHandler(this.FromLocation_Click);
             // 
             // Exchange
             // 
@@ -244,9 +246,9 @@
             this.ToLocation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ToLocation.TabIndex = 11;
             this.ToLocation.TabStop = false;
-            this.ToLocation.Click += new System.EventHandler(this.Location_Click);
+            this.ToLocation.Click += new System.EventHandler(this.ToLocation_Click);
             // 
-            // ConnectionSearch
+            // ConnectionSearchView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -262,7 +264,7 @@
             this.Controls.Add(this.ToStation);
             this.Controls.Add(this.FromStation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "ConnectionSearch";
+            this.Name = "ConnectionSearchView";
             this.Text = "ConnectionSearch";
             this.Load += new System.EventHandler(this.ConnectionSearch_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataViewGrid)).EndInit();

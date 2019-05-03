@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SwissTransportApp
 {
-    public partial class NavBar : Form
+    public partial class NavBarView : Form
     {
-        public NavBar()
+        public NavBarView()
         {
             InitializeComponent();
         }
@@ -68,13 +68,13 @@ namespace SwissTransportApp
 
         private void StationBoard_Click(object sender, EventArgs e)
         {
-            StationBoard stationboard = new StationBoard();
+            StationBoardView stationboard = new StationBoardView();
             nav(stationboard, content);
         }
 
         private void ConnectionSearch_Click(object sender, EventArgs e)
         {
-            ConnectionSearch connectionsearch = new ConnectionSearch();
+            ConnectionSearchView connectionsearch = new ConnectionSearchView();
             nav(connectionsearch, content);
         }
        
