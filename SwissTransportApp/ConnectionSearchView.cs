@@ -33,7 +33,7 @@ namespace SwissTransportApp
             Date.CustomFormat = "yyyy-MM-dd";
 
             Time.Format = DateTimePickerFormat.Custom;
-            Time.CustomFormat = DateTime.Now.ToString("HH:mm");
+            Time.CustomFormat = ("HH:mm");
         }
 
         private void Exchange_Click(object sender, EventArgs e)
