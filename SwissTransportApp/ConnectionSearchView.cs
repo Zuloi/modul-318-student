@@ -15,24 +15,25 @@ namespace SwissTransportApp
 {
     public partial class ConnectionSearchView : Form
     {
-        
-        
-        
-       
+        #region Methoden
+        Transport transport = new Transport();
+        Stations stations = new Stations();
+        Connections connections = new Connections();
+        #endregion
+        #region Initialize
         public ConnectionSearchView()
         {
             InitializeComponent();
         }
-
-      
-
+        #endregion
+        #region Methoden
         private void ConnectionSearch_Load(object sender, EventArgs e)
         {
             Date.Format = DateTimePickerFormat.Custom;
             Date.CustomFormat = "yyyy-MM-dd";
 
             Time.Format = DateTimePickerFormat.Custom;
-            Time.CustomFormat = "HH:mm";
+            Time.CustomFormat = DateTime.Now.ToString("HH:mm");
         }
 
         private void Exchange_Click(object sender, EventArgs e)
@@ -45,41 +46,28 @@ namespace SwissTransportApp
 
         private void SearchConnection_Click(object sender, EventArgs e)
         {          
-            Transport transport = new Transport();
-            Connections connections = transport.GetConnections(FromStation.Text, ToStation.Text, Date.Text, Time.Text);
+            connections = transport.GetConnections(FromStation.Text, ToStation.Text, Date.Text, Time.Text);
             DataViewGrid.Rows.Clear();
-            
-
             foreach (Connection connection in connections.ConnectionList)
             {
-                this.DataViewGrid.Rows.Add(Convert.ToDateTime(connection.From.Departure).ToString("HH:mm"), connection.From.Station.Name, connection.From.Platform, connection.Duration, connection.To.Station.Name, connection.To.Platform);
-               
-
+                try
+                {
+                    DataViewGrid.Rows.Add(Convert.ToDateTime(connection.From.Departure).ToString("HH:mm"), connection.From.Station.Name, connection.From.Platform, connection.Duration, connection.To.Station.Name);
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("Ungültige eingaben.");  
+                }
             }
-
         }
-
-      
-
-
-
-    
-
-   
 
         private void StationFill(object sender, EventArgs e)
         {
-            Transport transport = new Transport();
-            Stations stations = new Stations();
             ComboBox userInput = (ComboBox)sender;
-            
-
             if (userInput.Text.Length >= 1)
             {
                 stations = transport.GetStations(userInput.Text);
                 List<Station> stationList = stations.StationList;
-                
-
                 if (stationList.Count > 0)
                 {
                     foreach (Station station in stationList)
@@ -87,20 +75,15 @@ namespace SwissTransportApp
                         try
                         {
                             userInput.Items.Add(station.Name);
-                            
                         }
                         catch (Exception)
                         {
-                            MessageBox.Show("");
+                            MessageBox.Show("Ungültige Eingabe");
                         }
                     }
                 }
             }
         }
-
-
-
-      
 
         private void FromLocation_Click(object sender, EventArgs e)
         {
@@ -112,12 +95,12 @@ namespace SwissTransportApp
                 }
                 catch
                 {
-                    MessageBox.Show("Fehler");
+                    MessageBox.Show("Die Map ist nicht erreichbar");
                 }
             }
             else
             {
-                MessageBox.Show("Der Abfahrtsort ist ungültig.");
+                MessageBox.Show("Der Ankunftsort ist ungültig.");
             }
         }
 
@@ -131,7 +114,7 @@ namespace SwissTransportApp
                 }
                 catch
                 {
-                    MessageBox.Show("Fehler");
+                    MessageBox.Show("Die Map ist nicht erreichbar");
                 }
             }
             else
@@ -139,6 +122,6 @@ namespace SwissTransportApp
                 MessageBox.Show("Der Ankunftsort ist ungültig.");
             }
         }
+        #endregion
     }
-    
 }

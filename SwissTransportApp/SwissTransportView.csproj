@@ -116,5 +116,11 @@
   <ItemGroup>
     <None Include="Resources\red-location-icon-map-png-4.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SwissTransport_brand_usage_#2_created_by_logaster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SwissTransport_brand_usage_#1_created_by_logaster.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

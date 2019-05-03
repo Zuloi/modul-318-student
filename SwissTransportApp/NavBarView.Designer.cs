@@ -31,12 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NavBarView));
             this.navbarpanel = new System.Windows.Forms.Panel();
             this.content = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ConnectionSearch = new System.Windows.Forms.Label();
             this.StationBoard = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ExitForms = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.navbarpanel.SuspendLayout();
+            this.content.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,11 +63,22 @@
             // 
             this.content.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.content.BackColor = System.Drawing.Color.White;
+            this.content.BackColor = System.Drawing.Color.IndianRed;
+            this.content.Controls.Add(this.label2);
             this.content.Location = new System.Drawing.Point(0, 59);
             this.content.Name = "content";
             this.content.Size = new System.Drawing.Size(1198, 450);
             this.content.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(244, 195);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(694, 44);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Gehen Sie auf die Seite die Sie wollen";
             // 
             // pictureBox1
             // 
@@ -79,23 +93,23 @@
             // ConnectionSearch
             // 
             this.ConnectionSearch.AutoSize = true;
-            this.ConnectionSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConnectionSearch.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConnectionSearch.Location = new System.Drawing.Point(59, 18);
             this.ConnectionSearch.Name = "ConnectionSearch";
-            this.ConnectionSearch.Size = new System.Drawing.Size(167, 24);
+            this.ConnectionSearch.Size = new System.Drawing.Size(145, 22);
             this.ConnectionSearch.TabIndex = 6;
-            this.ConnectionSearch.Text = "ConnectionSearch";
+            this.ConnectionSearch.Text = "Verbindungen";
             this.ConnectionSearch.Click += new System.EventHandler(this.ConnectionSearch_Click);
             // 
             // StationBoard
             // 
             this.StationBoard.AutoSize = true;
-            this.StationBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StationBoard.Location = new System.Drawing.Point(248, 18);
+            this.StationBoard.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StationBoard.Location = new System.Drawing.Point(228, 18);
             this.StationBoard.Name = "StationBoard";
-            this.StationBoard.Size = new System.Drawing.Size(116, 24);
+            this.StationBoard.Size = new System.Drawing.Size(137, 22);
             this.StationBoard.TabIndex = 5;
-            this.StationBoard.Text = "StationBoard";
+            this.StationBoard.Text = "Stationsboard";
             this.StationBoard.Click += new System.EventHandler(this.StationBoard_Click);
             // 
             // label1
@@ -122,7 +136,7 @@
             this.ExitForms.Text = "x";
             this.ExitForms.Click += new System.EventHandler(this.ExitForms_Click);
             // 
-            // NavBar
+            // NavBarView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -132,11 +146,13 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "NavBar";
+            this.Name = "NavBarView";
             this.Text = "SwissTransport";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SwissTransport_MouseDown);
             this.navbarpanel.ResumeLayout(false);
             this.navbarpanel.PerformLayout();
+            this.content.ResumeLayout(false);
+            this.content.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -150,7 +166,9 @@
         private System.Windows.Forms.Label StationBoard;
         private System.Windows.Forms.Label ConnectionSearch;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Panel content;
+        private System.Windows.Forms.Label label2;
     }
 }
 

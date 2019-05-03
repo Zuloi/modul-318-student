@@ -12,11 +12,15 @@ namespace SwissTransportApp
 {
     public partial class NavBarView : Form
     {
+        #region Membervariable
+        StationBoardView stationboard = new StationBoardView();
+        ConnectionSearchView connectionsearch = new ConnectionSearchView();
+        #endregion
+        #region Initialize 
         public NavBarView()
         {
             InitializeComponent();
         }
-
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
@@ -24,17 +28,15 @@ namespace SwissTransportApp
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
-
-
+        #endregion
+        #region Methoden
         private void SwissTransport_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-
             if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
-
         }
 
         private void ExitForms_Click(object sender, EventArgs e)
@@ -47,38 +49,18 @@ namespace SwissTransportApp
             WindowState = FormWindowState.Minimized;
         }
 
-        
-
-        private void MaximizedForms_Click(object sender, EventArgs e)
-        {
-            
-
-            if (WindowState == FormWindowState.Normal) {
-               WindowState = FormWindowState.Maximized;
-                
-            }
-            else
-            {
-                WindowState = FormWindowState.Normal;
-            }
-        }
-
-
-
-
         private void StationBoard_Click(object sender, EventArgs e)
         {
-            StationBoardView stationboard = new StationBoardView();
+            
             nav(stationboard, content);
         }
 
         private void ConnectionSearch_Click(object sender, EventArgs e)
         {
-            ConnectionSearchView connectionsearch = new ConnectionSearchView();
+            
             nav(connectionsearch, content);
         }
        
-
         public void nav(Form form, Panel panel)
         {
             form.TopLevel = false;
@@ -87,7 +69,6 @@ namespace SwissTransportApp
             panel.Controls.Add(form);
             form.Show();
         }
-
-      
+        #endregion
     }
 }
