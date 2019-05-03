@@ -77,11 +77,7 @@ namespace SwissTransportApp
             ConnectionSearch connectionsearch = new ConnectionSearch();
             nav(connectionsearch, content);
         }
-        private void SwissTransport_Click(object sender, EventArgs e)
-        {
-            SwissTransport swisstransport = new SwissTransport();
-            nav(swisstransport, content);
-        }
+       
 
         public void nav(Form form, Panel panel)
         {

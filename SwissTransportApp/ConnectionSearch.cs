@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,12 +15,16 @@ namespace SwissTransportApp
 {
     public partial class ConnectionSearch : Form
     {
+        
+        
+        
+       
         public ConnectionSearch()
         {
             InitializeComponent();
         }
 
-    
+      
 
         private void ConnectionSearch_Load(object sender, EventArgs e)
         {
@@ -30,7 +35,7 @@ namespace SwissTransportApp
             Time.CustomFormat = "HH:mm";
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void Exchange_Click(object sender, EventArgs e)
         {
             string ChangeFromStation = FromStation.Text;
             string ChangeToStation = ToStation.Text;
@@ -39,11 +44,12 @@ namespace SwissTransportApp
         }
 
         private void SearchConnection_Click(object sender, EventArgs e)
-        {
-            Transport transport = new Transport();        
+        {          
+            Transport transport = new Transport();
             Connections connections = transport.GetConnections(FromStation.Text, ToStation.Text, Date.Text, Time.Text);
+            DataViewGrid.Rows.Clear();
+            
 
-           
             foreach (Connection connection in connections.ConnectionList)
             {
                 this.DataViewGrid.Rows.Add(Convert.ToDateTime(connection.From.Departure).ToString("HH:mm"), connection.From.Station.Name, connection.From.Platform, connection.Duration, connection.To.Station.Name, connection.To.Platform);
@@ -83,13 +89,74 @@ namespace SwissTransportApp
                             userInput.Items.Add(station.Name);
                             
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            MessageBox.Show(ex.Message);
+                            MessageBox.Show("");
                         }
                     }
                 }
             }
         }
+
+
+
+      
+
+        private void FromLocation_Click(object sender, EventArgs e)
+        {
+            
+            Transport transport = new Transport();
+            Stations stations = transport.GetStations(FromStation.Text);
+            List<Station> stationList = stations.StationList;
+
+            if (FromStation.Text != null)
+            {
+                try
+                {
+                    double xcoordinate = stationList[FromStation.SelectedIndex].Coordinate.XCoordinate;
+                    double ycoordinate = stationList[FromStation.SelectedIndex].Coordinate.YCoordinate;
+
+                    Process.Start("https://www.google.com/maps/search/?api=1&query=" + xcoordinate + "," + ycoordinate);
+                }
+                catch
+                {
+                    MessageBox.Show("Fehler");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Der Abfahrtsort ist ungültig.");
+            }
+        }
+
+        private void Location_Click(object sender, EventArgs e)
+        {
+            Transport transport = new Transport();
+            ComboBox userInput = (ComboBox)sender;
+            Stations stations = transport.GetStations(userInput.Text);
+            List<Station> stationList = stations.StationList;
+            
+
+            if (userInput.Text.Length != 0)
+            {   
+                try
+                {
+                    double xcoordinate = stationList[userInput.SelectedIndex].Coordinate.XCoordinate;
+                    double ycoordinate = stationList[userInput.SelectedIndex].Coordinate.YCoordinate;
+
+                    Process.Start("https://www.google.com/maps/search/?api=1&query=" + xcoordinate + "," + ycoordinate);
+                }
+                catch
+                {
+                    MessageBox.Show("Fehler");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Der Abfahrtsort ist ungültig.");
+            }
+        }
     }
+    
 }
+//List<Station> ToStations = new List<Station>();

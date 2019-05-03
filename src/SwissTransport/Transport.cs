@@ -26,7 +26,7 @@ namespace SwissTransport
 
         public StationBoardRoot GetStationBoard(string station)
         {
-            var request = CreateWebRequest("http://transport.opendata.ch/v1/stationboard?station=" + station);
+            var request = CreateWebRequest("http://transport.opendata.ch/v1/stationboard?station=" + station + "&limit=" + 8);
             var response = request.GetResponse();
             var responseStream = response.GetResponseStream();
 

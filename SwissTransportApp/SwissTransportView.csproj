@@ -66,12 +66,6 @@
     <Compile Include="StationBoard.Designer.cs">
       <DependentUpon>StationBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="SwissTransport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SwissTransport.Designer.cs">
-      <DependentUpon>SwissTransport.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="ConnectionSearch.resx">
       <DependentUpon>ConnectionSearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -90,9 +84,6 @@
     </Compile>
     <EmbeddedResource Include="StationBoard.resx">
       <DependentUpon>StationBoard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SwissTransport.resx">
-      <DependentUpon>SwissTransport.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -121,6 +112,9 @@
       <Project>{D0262178-A48F-4DE0-807B-E76B63E39421}</Project>
       <Name>SwissTransport</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red-location-icon-map-png-4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

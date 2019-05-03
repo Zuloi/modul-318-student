@@ -60,16 +60,33 @@ namespace SwissTransportApp
 
 
               }*/
+
             Transport transport = new Transport();
-            Stations stations = new Stations();
+            
+            StationBoardRoot stationBoardRoot = new StationBoardRoot();
+            //stationBoardEntries = transport.GetStationBoard(FromStation.Text).Entries;
+            /* try
+             {
+                 stationBoardRoot = transport.GetStationBoard(FromStation.Text);
 
-            stations = transport.GetStations(FromStation.Text);
-            List<Station> stationList = stations.StationList;
-            foreach (Station station in stationList)
-            {
-                this.DataViewGrid.Rows.Add(station.Name);
+                 foreach ( stationBoard in stationBoardRoot.Entries)
+                 {
+                      DataViewGrid.Rows.Add(Convert.ToDateTime(stationBoard.Stop.Departure).ToString("HH:mm"), stationBoard.To);
+                 }
+             }
+                  catch (Exception )
+                 {
+                     MessageBox.Show(FromStation.Text);
+                  }
+             /* Stations stations = new Stations();
 
-            }
+          stations = transport.GetStations(FromStation.Text);
+          List<Station> stationList = stations.StationList;
+          foreach (Station station in stationList)
+          {
+              this.DataViewGrid.Rows.Add(station.Station.Name);
+
+          }*/
         }
     }
 }
